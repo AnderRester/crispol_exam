@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Crispol</title>
+</head>
+
+<body>
+    <div class="header_nav">
+        <div class="upper">
+            <select name="" id="">
+                <option value="">Moldova</option>
+                <option value="">Romania</option>
+                <option value="">Russia</option>
+            </select>
+            <div class="number">+373(231)21-52-0</div>
+        </div>
+        <div class="medium">
+            <div class="logo">
+                <a href="../index.html"><span>Crispol</span><br>почувствуй комфорт по-новому</a>
+            </div>
+            <div class="cabinet"><button><a href="#"><img src="../images/cabinet_icon.png" alt="">Личный Кабинет</a></button></div>
+        </div>
+        <div class="lower">
+            <ul>
+                <li>
+                    <a href="../pages/catalog.html"> <img src="../images/catalog_icon.png" alt="">каталог</a>
+                </li>
+                <li>
+                    <a href="../pages/contacts.html"> <img src="../images/contacts_icon.png" alt="">контакты</a>
+                </li>
+                <li>
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=47.75599%2C27.93577&fbclid=IwAR0Q5Nr6IqeHrrJ6TuLmrXHxVxsUY6Sezxe3J26RvauAvnojqSKpt2DzAr4"> <img src="../images/branch_icon.png" alt="">филиалы</a>
+                </li>
+                <li>
+                    <a href="../pages/payment.html"> <img src="../images/payment_icon.png" alt="">оплата</a>
+                </li>
+                <li>
+                    <a href="../pages/delivery.html"> <img src="../images/delivery_icon.png" alt="">доставка</a>
+                </li>
+            </ul>
+            <select name="" id="">
+                <option value="">RO</option>
+                <option value="">RU</option>
+                <option value="">EN</option>
+            </select>
+        </div>
+    </div>
+    <div class="contacts">
+        <div class="contacts_title">Crispol</div>
+        <div class="contacts_body">
+            <div class="contacts_info">
+                <div class="contacts_number">Номер главного офиса: +373(231)21-52-0</div>
+                <div class="contacts_social">
+                    <div class="social"><img src="../images/viber.png" alt="">
+                        <div class="contacts_text">+373(231)21-52-0</div>
+                    </div>
+                    <div class="social"><img src="../images/whatsapp.png" alt="">
+                        <div class="contacts_text">+373(231)21-52-0</div>
+                    </div>
+                    <div class="social"><img src="../images/telegram.png" alt="">
+                        <div class="contacts_text">+373(231)21-52-0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="contacts_address ">
+                <div class="address ">Адрес: ул. Пушкина 98 А Бельцы, Молдова</div>
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--                                            SCRIPTS                                                      -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
+    <script>
+        // Определяем переменную map
+        var map;
+
+        // Функция initMap которая отрисует карту на странице
+        function initMap() {
+
+            // В переменной map создаем объект карты GoogleMaps и вешаем эту переменную на <div id="map"></div>
+            map = new google.maps.Map(document.getElementById('map'), {
+                // При создании объекта карты необходимо указать его свойства
+                // center - определяем точку на которой карта будет центрироваться
+                center: {
+                    lat: 47.7691904,
+                    lng: 27.93472
+                },
+                // zoom - определяет масштаб. 0 - видно всю платнеу. 18 - видно дома и улицы города.
+                zoom: 18,
+
+                // Добавляем свои стили для отображения карты
+                styles: [{
+                    "featureType": "administrative",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#444444"
+                    }]
+                }, {
+                    "featureType": "landscape",
+                    "elementType": "all",
+                    "stylers": [{
+                        "color": "#f2f2f2"
+                    }]
+                }, {
+                    "featureType": "poi",
+                    "elementType": "all",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                }, {
+                    "featureType": "road",
+                    "elementType": "all",
+                    "stylers": [{
+                        "saturation": -100
+                    }, {
+                        "lightness": 45
+                    }]
+                }, {
+                    "featureType": "road.highway",
+                    "elementType": "all",
+                    "stylers": [{
+                        "visibility": "simplified"
+                    }]
+                }, {
+                    "featureType": "road.arterial",
+                    "elementType": "labels.icon",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                }, {
+                    "featureType": "transit",
+                    "elementType": "all",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                }, {
+                    "featureType": "water",
+                    "elementType": "all",
+                    "stylers": [{
+                        "color": "#46bcec"
+                    }, {
+                        "visibility": "on"
+                    }]
+                }]
+            });
+
+            // Создаем маркер на карте
+            var marker = new google.maps.Marker({
+
+                // Определяем позицию маркера
+                position: {
+                    lat: 47.7691904,
+                    lng: 27.93472
+                },
+
+                // Указываем на какой карте он должен появится. (На странице ведь может быть больше одной карты)
+                map: map,
+
+                // Пишем название маркера - появится если навести на него курсор и немного подождать
+                title: 'Наш маркер: Большой театр',
+
+                // Укажем свою иконку для маркера
+                icon: 'http://rightblog.ru/wp-content/uploads/2016/07/theatre_icon.png'
+            });
+
+            // Создаем наполнение для информационного окна
+            var contentString = '<div id="content">' +
+                '<div id="siteNotice">' +
+                '</div>' +
+                '<h1 id="firstHeading" class="firstHeading">Главный офис</h1>' +
+                '<div id="bodyContent">' +
+                '<p>Главный офис Crispol в городе Бельцы</p>' +
+                '<p><b>Страница в Facebook</b> <a href="https://www.facebook.com/Crispol.MD/" target="_blank">Crispol MD</a>' +
+                '</p>' +
+                '</div>' +
+                '</div>';
+
+            // Создаем информационное окно
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString,
+                maxWidth: 400
+            });
+
+            // Создаем прослушивание, по клику на маркер - открыть инфо-окно infowindow
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+            });
+
+        }
+    </script>
+</body>
+<footer>© 2020 Crispol. All Rights Reserved.</footer>
+
+</html>
